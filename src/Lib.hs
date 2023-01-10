@@ -3,12 +3,22 @@ module Lib
       someFunc,
     ) where
 
-sumWithRound :: [Float] -> Integer
+import Text.Printf
+
+sumWithRound :: [Double] -> Integer
 sumWithRound l =
   sum $ map round l
 
+sumWithFloor :: [Double] -> Integer
+sumWithFloor l =
+  sum $ map floor l
+
+targetList :: [Double]
+targetList = [1.3, 2.7, 3.8, 4.2, 5.1]
+
 someFunc :: IO ()
 someFunc =
-  putStrLn $ show v
+  printf "result of sum used round: %d\nresult of sum used floor: %d\n\n" roundResult floorResult
   where
-    v = sumWithRound [1.3, 2.7, 3.8, 4.2, 5.1]
+    roundResult = sumWithRound targetList
+    floorResult = sumWithFloor targetList

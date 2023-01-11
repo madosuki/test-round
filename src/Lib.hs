@@ -21,9 +21,14 @@ sumWithFloor l =
 targetList :: [Double]
 targetList = [1.3, 2.7, 3.8, 4.2, 5.1]
 
+myReverse :: [t] -> [t]
+myReverse [] = []
+myReverse (x:xs) = myReverse xs ++ [x]
+
 someFunc :: IO ()
-someFunc =
+someFunc = do
   printf "target list size: %d\nresult of sum used round: %d\nresult of sum used floor: %d\n\n" lengthOfList roundResult floorResult
+  printf "before: %s\nreverserd: %s\n" (show targetList) (show (myReverse targetList))
   where
     roundResult = sumWithRound targetList
     floorResult = sumWithFloor targetList
